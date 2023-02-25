@@ -1,7 +1,8 @@
 import React from "react"
 import { Contacts } from "./Contacts/Contacts"
 import { FilterContacts } from "./FilterContacts/FilterContacts"
-import { PhonebookForm } from "./PhonebookForm/PhonebookForm"
+import { PhonebookForm } from "./PhonebookForm/PhonebookForm";
+import {Section} from "./App.styled"
 
 export class App extends React.Component {
 
@@ -19,9 +20,8 @@ export class App extends React.Component {
   }
 
 
-  addContact = newState => {
-    // console.log(newState)
-    // console.log(this.state.contacts)
+  addContact = (newState) => {
+
     this.state.contacts.some(contact => contact.name === newState.name) ? alert(`${newState.name} is in your list`) :
       this.setState(prevState => {
         return ({
@@ -31,11 +31,10 @@ export class App extends React.Component {
   };
   
 
-  filterForm = evt => this.setState({ filter: evt.target.value, });
+  filterForm = (evt) => {this.setState({ filter: evt.target.value, })};
   
   
-  deleteContact = (id) => {
-    console.log(id)
+  deleteContact = (id) => { 
     this.setState((prevState) => {
       return ({
         contacts: prevState.contacts.filter(contact => contact.id !== id)
@@ -63,7 +62,7 @@ export class App extends React.Component {
 
   
     return (
-      <section>
+      <Section>
         <h1>Phonebook</h1>
         < PhonebookForm onSubmit={addContact} />
         <h2>Contacts</h2>
@@ -74,8 +73,7 @@ export class App extends React.Component {
           contacts={filteredContacts}
           onClick={deleteContact}
            />
-        
-
-    </section>
+      
+      </Section>
   )}
 };

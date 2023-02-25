@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import { Item } from './ListItem.styled';
+import { Button } from './ListItem.styled';
 
 export const ListItem = ({ contact : {name, phone, id}, onClick }) => {
-    console.log()
+    
     
     return (
-        <li>
+        <Item>
             <span>{name}</span>
             <span>{phone}</span>
-            <button type='button' onClick={()=>onClick(id)}>Delete</button>
-        </li>
+            <Button type='button' onClick={()=>onClick(id)}>Delete</Button>
+        </Item>
     )
 }
 
