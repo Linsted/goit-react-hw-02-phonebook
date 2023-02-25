@@ -19,11 +19,16 @@ export class App extends React.Component {
   }
 
 
-  addContact = newState => 
-    this.setState(prevState => {
+  addContact = newState => {
+    // console.log(newState)
+    // console.log(this.state.contacts)
+    this.state.contacts.some(contact => contact.name === newState.name) ? alert(`${newState.name} is in your list`) :
+          this.setState(prevState => {
       return ({
-        contacts: [...prevState.contacts, newState],})
-    })
+              contacts: [...prevState.contacts, newState],
+            })
+          })
+  }
   
 
   filterForm = evt => this.setState({ filter: evt.target.value, });
